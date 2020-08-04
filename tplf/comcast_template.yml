@@ -1,0 +1,15 @@
+issuer: Comcast
+keywords:
+- COMCAST
+fields:
+  amount: 'Total Amount Due\s+\$(\d+\,?\d+\.?\d+)'
+  date: 'Billing Date\s+(.*)'
+  account_number: Account Number\s+(.*)
+  invoice_number: (10)
+  cable: Total Comcast Business Cable\s+\$(\d+\,?\d+\.?\d+)
+  internet: Total Comcast Business Internet\s+\$(\d+\,?\d+\.?\d+)
+  other_charges_credits: Total Other Charges & Credits\s+\$(\d+\,?\d+\.?\d+)
+options:
+  currency: USD
+  date_formats:
+    - '%m%d%y'

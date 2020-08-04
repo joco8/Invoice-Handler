@@ -1,0 +1,38 @@
+issuer: PSEG
+keywords:
+- PSE&G
+fields:
+  amount: (?=Total amount due|by [A-Za-z]* \d+\, \d+)*\$(\d+\,?\d*\.\d+)
+  date: Bill date:\s+([A-Za-z]+ \d+\, \d+)
+  invoice_number: Invoice Number:\s+(\d+)
+  issuer: (PSE&G)
+  bill_end_date: 'For the period: [A-Za-z]+ \d+\, \d+ to ([A-Za-z]+ \d+\, \d+)'
+  electric_charge: Electric charges - PSE&G\s+.*?\s+\$(.*)
+  electric_supply: Electric supply charges -\s+.*\$(.*)
+  electric_supply_name: Electric supply charges - ([A-Za-z\s]*)
+  sum_amount_total_electric:
+    - Electric charges - PSE&G\s+.*?\s+\$(.*)
+    - Electric supply charges -\s+.*\$(.*)
+  gas_charge: Gas charges - PSE&G\s+\$(.*)
+  kws: (?:Total kWh\s+|Total electric you used in\s+\d+\s+days\s+|Net Usage\s+|kWh charges\s+)(\d+,?\d+)
+  therms: (?:Total gas you used in\s+\d+\s+days\s+)(\d+.?\d+)
+  meter_date: (?:Estimated reading|Reading|Actual reading|For the period:) ([A-Za-z]+ \d+\, \d+)
+  test_amount: Total amount due(.*)
+  total_electric: Total electric charges\s+\$(\d+\,?\d*\.\d+)
+  credit_bool: (?=Total amount due|by [A-Za-z]* \d+\, \d+)*\$\d+\,?\d*\.\d+\s+CR
+  other_charges: Total other charges and credits\s+\$(\d+\,?\d*\.\d+)\s+CR
+tables:
+- start: ACCOUNT NUMBER
+  end: Your billing summary
+  body: (?=\w|\r)*(?P<account_number>\d{2} \d{3} \d{3} \d{2})
+- start: Details of your gas charges
+  end: Total gas
+  body: Meter \# (?P<gas_meter>\d+)
+- start: Details of your electric charges
+  end: Total electric
+  body: Meter \# (?P<electric_meter>\d+)
+
+options:
+  currency: USD
+  date_formats:
+    - '%m%d%y'
