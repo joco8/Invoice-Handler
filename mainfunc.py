@@ -3,10 +3,8 @@ from invoice2data.extract.loader import read_templates
 import csv
 import os
 from datetime import datetime
-import pandas as pd 
 from invoice_manipulation import invoice
 from invoice_to_csv import write_to_csv, return_total_expense
-from rename_pdf import rename
 from variables import folder_with_pdfs, folder_for_renamed_pdfs, AP_csv_file_name, folder_for_csv, vendor_usage_running_tab, folder_vendor_usage
 
 
