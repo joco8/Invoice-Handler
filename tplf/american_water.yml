@@ -1,0 +1,17 @@
+issuer: American Water
+keywords:
+- American Water
+fields:
+  amount: 'Total Amount Due:\s+\$(\d+\,?\d*\.\d+)'
+  date: 'Billing Date:\s+(.*)'
+  account_number: Account\s*No.\s*(\d+\-\d+)
+  do_by_date: 'Payment Due By: (.*)'
+  total_gallons: 'Total Gallons:\s*(\d+,?\d*.?\d*)'
+tables:
+- start: Page \d+ of \d+
+  end: Account
+  body: (?P<invoice_number>(?:\d+))
+options:
+  currency: USD
+  date_formats:
+    - '%m%d%y'
