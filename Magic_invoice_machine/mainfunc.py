@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from invoice2data import extract_data
 from invoice2data.extract.loader import read_templates
 import csv
@@ -85,5 +87,7 @@ def mainFunc(pdfsFolder):
     my_new_list.close()
 
 #Function calls 
-
-mainFunc(folder_with_pdfs)
+if __name__=="__main__":
+    mainFunc(folder_with_pdfs)
+else:
+    mainFunc(folder_with_pdfs)

@@ -6,7 +6,7 @@ import csv
 import os
 from datetime import datetime
 import pandas as pd 
-from variables import vendor_usage_running_tab, folder_vendor_usage, folder_with_pdfs, folder_for_renamed_pdfs
+from variables import vendor_usage_running_tab, folder_vendor_usage, folder_with_pdfs, folder_for_renamed_pdfs, property_code_file
 
 numberOfInvoices = 0
 totalInvoiceExpense = 0
@@ -395,7 +395,7 @@ def building_code(inv):
         
     print(acc_number)
     #open reference doc with building codes
-    g = open('property_codes.csv', 'r')
+    g = open(property_code_file, 'r')
     reader = csv.reader(g)
     for row in reader:
         if(row[1] == acc_number):

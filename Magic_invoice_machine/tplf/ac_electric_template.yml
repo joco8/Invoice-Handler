@@ -1,0 +1,14 @@
+issuer: Atlantic City Electric
+keywords:
+- atlanticcityelectric.com
+fields:
+  amount: (?=Total amount due|by [A-Za-z]* \d+\, \d+)*\$(\d+\,?\d*\.\d+)
+  t_a: Total amount due by (.*)
+  date: 'Bill Issue date:\s*([A-Za-z]+ \d+\, \d+)'
+  invoice_number: 'Invoice Number\s*:?\s*(\d+)'
+  account_number: 'Account number:\s*(\d{4}\s*\d{4}\s*\d{3})'
+  
+options:
+  currency: USD
+  date_formats:
+    - '%m%d%y'

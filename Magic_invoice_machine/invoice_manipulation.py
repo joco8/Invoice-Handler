@@ -6,11 +6,11 @@ import csv
 import os
 from datetime import datetime
 import pandas as pd 
-
+from variables import cwd
 
 class invoice: 
     def __init__(self, invDirectory, filename):
-        templates = read_templates('tplf')
+        templates = read_templates(cwd + '/tplf')
         pdfFile = invDirectory + '/' + filename
         result = extract_data(pdfFile, templates=templates)
         print(result)
